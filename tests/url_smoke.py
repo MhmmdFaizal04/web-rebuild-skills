@@ -23,6 +23,27 @@ thread.start()
 local = f'http://127.0.0.1:{server.server_port}/reference.html'
 report = {'purpose': 'URL inspection and comparison controls, not an AI-generated rebuild',
           'os': platform.platform(), 'code_revision': os.getenv('GITHUB_SHA', 'local'), 'captures': []}
+def restrict_requests(context, allowed):
+    blocked = []
+
+    def handle(route):
+        url = route.request.url.split('#', 1)[0]
+        if url not in allowed:
+            blocked.append(url)
+            route.abort()
+            return
+        # Fetch at most this URL; do not follow redirects before scope checks.
+        response = route.fetch(max_redirects=0)
+        if 300 <= response.status < 400:
+            blocked.append(url + ' [redirect rejected]')
+            route.abort()
+            return
+        route.fulfill(response=response)
+
+    context.route('**/*', handle)
+    return blocked
+
+
 try:
     with sync_playwright() as p:
         browser = p.chromium.launch()
@@ -34,7 +55,8 @@ try:
         for label, url in sources:
             for width, height in [(320, 900), (768, 1024), (1440, 1000)]:
                 context = browser.new_context(viewport={'width': width, 'height': height}, device_scale_factor=1,
-                                              color_scheme='light', reduced_motion='reduce', locale='en-US', timezone_id='UTC')
+                                              color_scheme='light', reduced_motion='reduce', locale='en-US', timezone_id='UTC', service_workers='block')
+                blocked = restrict_requests(context, {url})
                 page = context.new_page()
                 errors = []
                 page.on('pageerror', lambda error: errors.append(str(error)))
@@ -64,16 +86,21 @@ try:
                 page.keyboard.press('Enter')
                 assert page.locator('details').first.evaluate('(node) => node.open')
                 assert not errors, errors
+                outside = url.rsplit('/', 1)[0] + '/out-of-scope-probe'
+                assert page.evaluate('(url) => fetch(url).then(() => false).catch(() => true)', outside)
+                assert outside in blocked
                 report['captures'].append({'source': label, 'requested_url': url, 'status': response.status,
                     'viewport': {'width': width, 'height': height}, 'dpr': 1, 'locale': 'en-US', 'timezone': 'UTC',
                     'color_scheme': 'light', 'reduced_motion': 'reduce', 'observed_heading': observed,
                     'reference': source.name, 'control': control.name, 'mutated': mutated.name,
                     'same_page_control_passed': True, 'mutation_detected': True,
-                    'anchor_navigation': True, 'keyboard_disclosure': True})
+                    'anchor_navigation': True, 'keyboard_disclosure': True, 'scope_probe_blocked': True, 'blocked_requests': blocked})
                 context.close()
-        context = browser.new_context()
+        context = browser.new_context(service_workers='block')
+        missing_url = local.replace('reference.html', 'missing-reference.html')
+        restrict_requests(context, {missing_url})
         page = context.new_page()
-        missing = page.goto(local.replace('reference.html', 'missing-reference.html'))
+        missing = page.goto(missing_url)
         assert missing and missing.status == 404
         report['negative_control'] = {'status': missing.status, 'treated_as_reference': False}
         context.close()
