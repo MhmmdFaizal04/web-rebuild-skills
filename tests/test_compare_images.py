@@ -1,10 +1,12 @@
 import contextlib
+import hashlib
 import importlib.util
 import io
 import json
 from pathlib import Path
 import tempfile
 import unittest
+from unittest.mock import patch
 
 from PIL import Image
 
@@ -95,6 +97,32 @@ class CompareTests(unittest.TestCase):
         first.save(self.right, save_all=True, append_images=[Image.new('RGB', (2, 2), 'blue')], duration=100, loop=0)
         with self.assertRaisesRegex(ValueError, 'single-frame'):
             module.compare(self.left, self.right, self.output)
+
+    def test_16_bit_grayscale_rejected(self):
+        for value in (256, 65535):
+            Image.new('I;16', (2, 2), value).save(self.right)
+            with self.subTest(value=value), self.assertRaisesRegex(ValueError, '16-bit'):
+                module.compare(self.left, self.right, self.output)
+
+    def test_encoded_size_limit(self):
+        with patch.object(module, 'MAX_BYTES', 4), self.assertRaisesRegex(ValueError, 'encoded bytes'):
+            module.compare(self.left, self.right, self.output)
+
+    def test_hash_matches_decoded_bytes_after_path_replacement(self):
+        original_hash = hashlib.sha256(self.right.read_bytes()).hexdigest()
+        original_load = module.load_png
+
+        def replace_after_decode(path):
+            result = original_load(path)
+            if path == self.right:
+                Image.new('RGB', (2, 2), 'black').save(self.right)
+            return result
+
+        with patch.object(module, 'load_png', side_effect=replace_after_decode):
+            report = module.compare(self.left, self.right, self.output)
+        self.assertTrue(report['passed'])
+        self.assertEqual(report['candidate_sha256'], original_hash)
+        self.assertNotEqual(report['candidate_sha256'], hashlib.sha256(self.right.read_bytes()).hexdigest())
 
     def test_cli_exit_codes(self):
         with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):

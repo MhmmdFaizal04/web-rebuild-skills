@@ -29,7 +29,7 @@ Arguments:
 
 Defaults are strict: threshold 0, ratio 0. Choose task-appropriate tolerances before a comparison. Values in examples are not endorsed universal targets.
 
-The helper composites transparency onto white, ignores embedded color-profile transformations, converts to RGB, and supports at most 4,000,000 pixels per input. It refuses mismatched sizes, animated/non-PNG files, invalid thresholds, existing output directories, and oversized images. Use viewport or agreed region captures for larger pages; the helper intentionally has no resizing or automatic masking feature.
+The helper composites transparency onto white, ignores embedded color-profile transformations, converts to RGB, and supports at most 4,000,000 pixels and 32 MiB encoded bytes per input. It refuses 16-bit grayscale PNGs rather than silently clipping their intensity range. It also refuses mismatched sizes, animated/non-PNG files, invalid thresholds, existing output directories, and oversized images. It hashes the same immutable bytes it decodes, even if a screenshot path is replaced during comparison. Use viewport or agreed region captures for larger pages; the helper intentionally has no resizing or automatic masking feature.
 
 Outputs:
 

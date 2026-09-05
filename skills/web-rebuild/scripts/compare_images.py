@@ -1,6 +1,7 @@
 """Compare local PNG captures without resizing, networking, or replacing evidence."""
 import argparse
 import hashlib
+import io
 import json
 import math
 from pathlib import Path
@@ -10,19 +11,27 @@ import warnings
 from PIL import Image, ImageChops, ImageStat
 
 MAX_PIXELS = 4_000_000
+MAX_BYTES = 32 * 1024 * 1024
 
 
 def load_png(path):
+    with Path(path).open('rb') as source:
+        data = source.read(MAX_BYTES + 1)
+    if len(data) > MAX_BYTES:
+        raise ValueError(f'Image exceeds {MAX_BYTES} encoded bytes')
     with warnings.catch_warnings():
         warnings.simplefilter('error', Image.DecompressionBombWarning)
-        with Image.open(path) as image:
+        with Image.open(io.BytesIO(data)) as image:
             if image.format != 'PNG' or getattr(image, 'n_frames', 1) != 1:
                 raise ValueError('Only single-frame PNG images are supported')
+            if image.mode == 'I' or image.mode.startswith('I;16'):
+                raise ValueError('16-bit grayscale PNGs are unsupported; supply an explicitly converted 8-bit capture')
             if image.width * image.height > MAX_PIXELS:
                 raise ValueError(f'Image exceeds {MAX_PIXELS} pixels; use a viewport capture')
             image.load()
             rgba = image.convert('RGBA')
-            return Image.alpha_composite(Image.new('RGBA', rgba.size, 'white'), rgba).convert('RGB')
+            rgb = Image.alpha_composite(Image.new('RGBA', rgba.size, 'white'), rgba).convert('RGB')
+            return rgb, hashlib.sha256(data).hexdigest()
 
 
 def compare(reference, candidate, output, threshold=0, max_mismatch_ratio=0.0):
@@ -31,7 +40,8 @@ def compare(reference, candidate, output, threshold=0, max_mismatch_ratio=0.0):
     if not math.isfinite(max_mismatch_ratio) or not 0 <= max_mismatch_ratio <= 1:
         raise ValueError('max-mismatch-ratio must be finite and between 0 and 1')
     reference, candidate, output = Path(reference), Path(candidate), Path(output)
-    left, right = load_png(reference), load_png(candidate)
+    left, reference_hash = load_png(reference)
+    right, candidate_hash = load_png(candidate)
     if left.size != right.size:
         raise ValueError(f'Image dimensions differ: {left.size} versus {right.size}; do not resize evidence')
     difference = ImageChops.difference(left, right)
@@ -41,9 +51,6 @@ def compare(reference, candidate, output, threshold=0, max_mismatch_ratio=0.0):
     different = sum(histogram[threshold + 1:])
     pixels = left.width * left.height
     ratio = different / pixels
-    with reference.open('rb') as source, candidate.open('rb') as rebuilt:
-        reference_hash = hashlib.file_digest(source, 'sha256').hexdigest()
-        candidate_hash = hashlib.file_digest(rebuilt, 'sha256').hexdigest()
     report = {
         'schema_version': 1,
         'reference': str(reference),

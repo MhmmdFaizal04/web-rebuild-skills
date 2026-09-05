@@ -72,5 +72,5 @@ jobs:
         run: |
           target="$(mktemp -d)"
           cd "$target"
-          npx --yes skills@1.5.23 add https://github.com/MhmmdFaizal04/web-rebuild-skills/tree/${{ github.sha }}/skills/web-rebuild --skill web-rebuild --agent opencode --copy --yes
+          npx --yes skills@1.5.23 add MhmmdFaizal04/web-rebuild-skills --skill web-rebuild --agent opencode --copy --yes
           test -n "$(find . -path '*/web-rebuild/SKILL.md' -print -quit)"
