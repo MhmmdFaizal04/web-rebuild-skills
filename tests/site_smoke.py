@@ -23,10 +23,16 @@ with sync_playwright() as p:
         page.evaluate("Object.defineProperty(navigator, 'clipboard', {configurable:true,value:{writeText:async()=>{throw new Error('denied')}}})")
         page.locator('#copy').click()
         page.wait_for_function("document.getElementById('copy-status').textContent.includes('Clipboard unavailable')")
+        assert page.evaluate('getSelection().toString() === document.getElementById("command").textContent')
+        assert 'sr-only' not in page.locator('#copy-status').get_attribute('class')
+        assert page.locator('#copy').inner_text() == 'Retry copy'
+        page.reload()
+        page.evaluate('document.fonts.ready')
         page.locator('summary').first.focus()
         page.keyboard.press('Enter')
         assert page.locator('details').first.evaluate('(node)=>node.open')
         page.keyboard.press('Enter')
+        page.locator('summary').first.evaluate('(node) => node.blur()')
         page.evaluate('scrollTo(0,0)')
         page.screenshot(path=str(ROOT / f'artifacts/showcase-{width}.png'), full_page=True, animations='disabled')
         assert not errors, errors

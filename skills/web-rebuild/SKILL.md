@@ -16,7 +16,7 @@ Reconstruct what can be observed, preserve what the user asked to keep, and veri
 
 Do not introduce emoji into authored UI text, icons, placeholders, decorative elements, or code examples. Use meaningful text or a consistent SVG/icon family. Do not strip existing user content or runtime input. If a reference contains emoji, substitute text/SVG and disclose that deviation unless the user explicitly requests preserving it.
 
-Do not default to generic gradient heroes, glass panels, bento grids, decorative blobs, repetitive cards, fake testimonials, or invented statistics. These styles are not universally forbidden: use them only when justified by the actual reference or brief. Keep the user's established visual language. Design quality is a reasoned review, not something an automated score can guarantee.
+Do not default to generic gradient heroes, glass panels, bento grids, decorative blobs, or repetitive cards. These visual treatments are not universally forbidden: use them only when justified by the actual reference or brief. Never present fabricated testimonials, customer logos, or statistics as real. Clearly label illustrative data and do not add fake social proof as decoration. Keep the user's established visual language. Design quality is a reasoned review, not something an automated score can guarantee.
 
 Load [design quality](references/design-quality.md) for hierarchy, typography, icon semantics, UX states, accessibility, localization, and RTL checks. Load [stack adapters](references/stack-adapters.md) to implement in the project's native language, templates, components, or widgets. Do not force React, Tailwind, Node, or Python into the user's frontend. The optional tooling runtime is separate from the application stack.
 

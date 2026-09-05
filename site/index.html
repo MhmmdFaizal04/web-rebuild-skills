@@ -32,8 +32,15 @@ document.getElementById('copy').addEventListener('click', async () => {
     status.textContent = 'Installation command copied.';
     document.getElementById('copy').textContent = 'Copied';
   } catch {
-    status.textContent = 'Clipboard unavailable. Select and copy the visible command.';
-    document.getElementById('copy').textContent = 'Select text';
+    const range = document.createRange();
+    range.selectNodeContents(document.getElementById('command'));
+    const selection = window.getSelection();
+    selection.removeAllRanges();
+    selection.addRange(range);
+    status.classList.remove('sr-only');
+    status.classList.add('sub');
+    status.textContent = 'Clipboard unavailable. Command selected; copy it manually.';
+    document.getElementById('copy').textContent = 'Retry copy';
   }
 });
 </script>
