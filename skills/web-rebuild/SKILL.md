@@ -5,7 +5,7 @@ license: MIT
 compatibility: Requires a coding agent with file editing. Live inspection and screenshot verification require separately configured browser and image tools. Optional local PNG comparison needs Python 3.11+ and Pillow.
 metadata:
   author: MhmmdFaizal04
-  version: "0.2.1"
+  version: "0.3.0"
 ---
 
 # Web Rebuild
@@ -35,6 +35,14 @@ Do not default to generic gradient heroes, glass panels, bento grids, decorative
 
 Consult relevant sections of [design quality](references/design-quality.md) when making design decisions about hierarchy, typography, icon semantics, UX states, accessibility, localization, and RTL checks. Consult only the current stack row and applicable preservation checks in [stack adapters](references/stack-adapters.md) to implement in the project's native language, templates, components, or widgets. Do not force React, Tailwind, Node, or Python into the user's frontend. The optional tooling runtime is separate from the application stack.
 
+## Icons and Motion
+
+When icons or animation are relevant, consult only the needed section of [icons and motion](references/icons-and-motion.md). In shadcn/ui projects use the configured icon library (commonly Lucide); there is no separate universal "shadcn icons" package. Import selected SVG icons, keep style consistent, and label controls. No emoji icons.
+
+Use the project's existing animation library first. Choose GSAP for coordinated timelines/scroll choreography, Motion for React (`motion/react`) for React interaction/layout/presence, or retain installed `framer-motion` APIs without an incidental migration. Do not install both just to make a page look complete. Prefer CSS/native transitions for simple effects and preserve non-React stacks. Libraries are optional application dependencies, not installed by this skill.
+
+Match observed movement in faithful mode; add new motion only when requested or justified by a brief. Preserve reduced motion, visible essential content without JavaScript, lifecycle cleanup, SSR boundaries, and accessible interactions. Test normal and reduced-motion behavior separately from stabilized visual captures; disabling animation for screenshots is not an animation test.
+
 ## 1. Establish the Contract
 
 Inspect the target project first: stack, routes, components, tokens, scripts, and uncommitted work. Do not overwrite unrelated changes or install another framework by default.
@@ -55,7 +63,7 @@ Browser access does not authorize arbitrary requests to private networks, metada
 
 ## 3. Observe Before Coding
 
-For reference-led work, load [observation guidance](references/observation.md). For brief-led creation, inspect the existing product and record proposed layout/token decisions instead of inventing a source capture. Inspect actual browser evidence when available; a raw HTML fetch is not a rendered visual reference.
+For a source URL, follow [URL rebuild](references/url-rebuild.md): validate scope, open the real page in an available browser, verify final URL/status/content, inspect safe states, and capture evidence before implementing. If no browser is available, request screenshots and label live inspection unverified. For reference-led work, load [observation guidance](references/observation.md). For brief-led creation, inspect the existing product and record proposed layout/token decisions instead of inventing a source capture. Inspect actual browser evidence when available; a raw HTML fetch is not a rendered visual reference.
 
 Record layout regions, widths, section order, typography, wrapping, colors, spacing, asset crop, and interaction states. Separate **observed**, **inferred**, and **unavailable** information. Measure large anchors instead of guessing every pixel. Save source capture metadata and an asset provenance list.
 

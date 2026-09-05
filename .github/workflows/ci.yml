@@ -37,6 +37,10 @@ jobs:
         run: |
           python -m playwright install --with-deps chromium
           python tests/browser_smoke.py
+      - name: Verify URL inspection and comparison controls
+        env:
+          CHECK_PUBLIC_REFERENCE: ${{ github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && '1' || '0' }}
+        run: python tests/url_smoke.py
       - name: Build and test static showcase
         run: |
           python tests/build_site.py

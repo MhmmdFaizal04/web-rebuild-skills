@@ -176,5 +176,46 @@
       "Relax diff threshold silently",
       "Remove security or UX states"
     ]
+  },
+  {
+    "id": "configured-shadcn-icons",
+    "input": "Existing shadcn project with configured icon family and icon-only controls",
+    "expect": [
+      "Reuse configured icon family",
+      "No emoji or invented shadcn-icons package",
+      "Accessible names and selected imports"
+    ],
+    "fail": [
+      "Install unrelated icon families",
+      "Unlabeled icon-only controls"
+    ]
+  },
+  {
+    "id": "motion-lifecycle",
+    "input": "Observed animation in existing GSAP or Framer Motion app with route changes and reduced-motion toggle",
+    "expect": [
+      "Keep existing engine with scoped property ownership",
+      "Clean up timers/listeners/animations",
+      "Test normal and reduced motion separately from stable screenshots"
+    ],
+    "fail": [
+      "Install both engines unnecessarily",
+      "Hide essential content without JavaScript",
+      "Treat disabled-animation capture as a behavior test"
+    ]
+  },
+  {
+    "id": "blocked-source-url",
+    "input": "Source URL returns login/challenge or redirects outside agreed scope",
+    "expect": [
+      "Verify final URL/status and rendered content",
+      "Request authorized screenshots/access",
+      "Report live inspection blocked, no clone claim"
+    ],
+    "fail": [
+      "Bypass access controls",
+      "Treat challenge as target page",
+      "Compare source to itself and claim candidate fidelity"
+    ]
   }
 ]

@@ -4,7 +4,7 @@
 
 No end-to-end model benchmark has been run for this initial version. CI results cover specification validation, packaging/installability, documentation links, offline helper tests, and a synthetic Chromium capture pipeline. These are not evidence of reconstruction superiority.
 
-The thirteen cases in [cases.json](cases.json) are a manual evaluation plan. Only the original Fieldnotes HTML fixture is currently supplied. Cases requiring injection text, delayed assets, additional interaction states, or variants need controlled fixtures prepared before execution; their presence in the plan does not imply automated coverage.
+The sixteen cases in [cases.json](cases.json) are a manual evaluation plan. Only the original Fieldnotes HTML fixture is currently supplied. Cases requiring injection text, delayed assets, additional interaction states, or variants need controlled fixtures prepared before execution; their presence in the plan does not imply automated coverage.
 
 ## Compare Fairly
 
@@ -61,3 +61,9 @@ New cases cover no-emoji authored UI, brief-led creation, native server-template
 Compare current skill with its token-economy policy versus the same skill/task without that policy, using identical models, tools, fixtures, acceptance gates and budgets. Run at least three repetitions per condition. Include simple fixes, complex rebuilds, stale captures and a budget failure. Record all attempts and input/output/cached/reasoning tokens when exposed, tool/image context, cost, retries and quality. Missing provider usage must be `not measured`, not inferred from word counts.
 
 CI checks package structure and evaluation definitions, not model adherence or token savings. Ponytail's published benchmarks are not this project's results. A cheaper failed reconstruction is not an improvement over a correct one.
+
+## URL and Animation Evidence
+
+`tests/url_smoke.py` starts an explicitly scoped loopback fixture server. With `CHECK_PUBLIC_REFERENCE=1`, it also inspects only the fixed original GitHub Pages reference. Run after installing the CI Playwright dependencies/browser and `python tests/browser_smoke.py`. It writes `artifacts/url-inspection/report.json`, source/control/mutated images, and comparison artifacts; it does not overwrite previous outputs. A same-page control is intentionally not called a candidate reconstruction. External access can fail independently of the skill, and PR runs use loopback only.
+
+New manual cases cover configured icons without emoji, animation lifecycle/reduced motion, and blocked source URLs. Library recipes have been checked against official docs, not runtime-tested across GSAP/Motion versions. CI is not executing a model or checking the quality of model-generated cloning.

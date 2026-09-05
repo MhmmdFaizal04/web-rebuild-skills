@@ -53,6 +53,24 @@ Replace `<REFERENCE_URL>` with a URL you are authorized to use. For screenshots,
 | Evidence instead of promises | Deliver observed facts, assumptions, screenshots, deviations, checks run, and unverified areas |
 | Optional offline image helper | Produce a side-by-side, overlay, absolute-difference image, and JSON mismatch report from two local PNGs |
 
+## Icons, GSAP, and Motion
+
+Use the project's configured shadcn/ui icon library, commonly **Lucide**, with consistent SVG styling and accessible controls. There is no universal separate "shadcn icons" package. The skill does not add emoji icons or force React into other stacks.
+
+Choose **GSAP** for timelines/scroll choreography or **Motion for React** (`motion/react`) for React gestures/layout/presence. Existing `framer-motion` projects keep their installed APIs unless a migration is requested. Reuse existing dependencies; simple effects can stay in CSS. Do not install both engines or add gratuitous animations to a static reference.
+
+Guidance covers cleanup on unmount/navigation, SSR boundaries, reduced motion, content visibility, selected imports and separate behavior/visual testing. These are optional implementation choices, not libraries automatically installed by the skill. [Recipes and official sources](skills/web-rebuild/references/icons-and-motion.md).
+
+## Rebuild UI from a URL
+
+Yes: a URL is a supported reference input **when your coding agent has browser/vision tools and access to the intended page**. The agent inspects its rendered UI, implements a separate candidate in your project, then compares and corrects it. It does not retrieve the website's backend source or guarantee copying every protected/dynamic page.
+
+> Use web-rebuild to recreate <AUTHORIZED_URL> in our TypeScript project. Verify the actual page in your browser, inspect desktop/mobile, use our configured shadcn/Lucide icons, and keep existing GSAP or Motion for observed effects. Build a separate candidate, compare screenshots, test keyboard and reduced motion, and report differences. No emoji.
+
+**What CI verifies:** a fixed original public HTTPS reference and a loopback HTTP fixture can be rendered and inspected at three viewports. Tests record heading styles/geometry, capture images, detect a deliberate visual mutation, exercise navigation/disclosure, and check a missing-page response. These are **URL inspection and comparison controls, not an AI-generated clone**. No automated model reconstruction benchmark has been run. [URL workflow and evidence levels](skills/web-rebuild/references/url-rebuild.md).
+
+If the URL is blocked or browser tools are unavailable, the agent must request screenshots or authorized access and mark live inspection unverified. No login/paywall bypass, indiscriminate crawling, or copied trackers/assets without rights.
+
 ## Token-Conscious by Default
 
 When `web-rebuild` is active, it avoids unnecessary implementation work and repeated context: load relevant guide sections on demand, reuse suitable components, inspect only the affected code with enough context, and report concise evidence instead of repeating full files or logs. Existing design, native-stack, no-emoji, and verification rules still apply.
@@ -116,7 +134,7 @@ Common CLI agent identifiers are `opencode`, `claude-code`, `cursor`, and `codex
 To install the tagged version rather than moving `main`:
 
 ```bash
-npx skills add https://github.com/MhmmdFaizal04/web-rebuild-skills/tree/v0.2.1/skills/web-rebuild
+npx skills add https://github.com/MhmmdFaizal04/web-rebuild-skills/tree/v0.3.0/skills/web-rebuild
 ```
 
 Read the skill and scripts before installation and review updates. You do **not** run `npx web-rebuild-skills`: the existing Vercel `skills` CLI installs this GitHub package; no separate npm package is needed.
@@ -151,7 +169,7 @@ This uses portable Agent Skills frontmatter with on-demand references. CI checks
 
 CI also validates the specification, checks local documentation links, runs image-helper tests, and captures the original HTML practice fixture in Chromium at three viewports. It compares real captures and an intentionally altered capture to test the helper pipeline. This is a **synthetic verification smoke test**, not an AI-generated before/after showcase.
 
-Status: **experimental v0.2.1**. No controlled model-versus-competitor benchmark has been completed. Browser behavior and reconstruction quality depend on your agent, model, tools, reference, and task. [Evaluation protocol](evals/README.md) includes thirteen scenarios and a baseline plan; unpublished results are not counted as passes.
+Status: **experimental v0.3.0**. No controlled model-versus-competitor benchmark has been completed. Browser behavior and reconstruction quality depend on your agent, model, tools, reference, and task. [Evaluation protocol](evals/README.md) includes sixteen scenarios and a baseline plan; unpublished results are not counted as passes.
 
 ## Safety and Rights
 

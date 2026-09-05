@@ -4,6 +4,18 @@ Skill AI untuk membangun ulang frontend dari URL atau screenshot berizin, memban
 
 [Lihat showcase](https://mhmmdfaizal04.github.io/web-rebuild-skills/) | [Buka demo referensi](https://mhmmdfaizal04.github.io/web-rebuild-skills/reference.html)
 
+## Ikon, Animasi, dan URL di v0.3.0
+
+- Ikon mengikuti konfigurasi shadcn/ui proyek, biasanya Lucide. Tidak ada paket universal bernama "shadcn icons"; gunakan SVG dan label aksesibel, bukan emoji.
+- GSAP untuk timeline/animasi scroll; Motion for React atau Framer Motion existing untuk interaksi/layout React. Tidak memasang keduanya otomatis dan tidak memigrasikan stack lain ke React.
+- Aturan reduced motion, cleanup, SSR, dan konten tetap terlihat tanpa JavaScript. Animasi harus sesuai referensi atau permintaan, bukan dekorasi wajib.
+- URL bisa menjadi input rebuild bila agent punya browser/vision tools. Skill mengarahkan inspeksi -> implementasi kandidat terpisah -> capture -> compare -> fix.
+- CI menguji akses URL publik orisinal dan HTTP lokal, capture tiga viewport, perbandingan kontrol, mutasi visual, navigasi/keyboard, serta halaman 404. **Ini belum benchmark AI yang menghasilkan clone**, dan bukan jaminan semua URL dapat disalin.
+
+> Gunakan web-rebuild untuk membangun ulang UI dari <URL_BERIZIN> di proyek TypeScript ini. Buka URL lewat browser, pastikan halaman yang benar, periksa desktop/mobile, gunakan ikon shadcn/Lucide existing dan GSAP atau Motion sesuai kebutuhan. Bandingkan kandidat terpisah dengan referensi, uji reduced motion dan keyboard. Jangan gunakan emoji atau mengklaim tes yang tidak dijalankan.
+
+Perbarui dengan `npx skills update web-rebuild`, lalu mulai ulang agent. Browser, library aplikasi, dan API model tidak dipasang otomatis oleh skill.
+
 ## Hemat Token di v0.2.1
 
 Aturan hemat token aktif bersama skill tanpa memasang Ponytail terpisah. Agent diarahkan memakai komponen yang sudah ada, membaca file/panduan seperlunya, menghindari kode spekulatif dan pengulangan hasil tool, serta memberi laporan ringkas.

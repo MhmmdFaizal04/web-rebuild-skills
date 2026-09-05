@@ -32,6 +32,12 @@ Install the skill first using the root README. These prompts go into your coding
 
 This is the default efficiency policy, not an extra skill or a special CLI flag. Ask for a detailed explanation when needed; correctness takes priority over a shorter answer.
 
+## 8. URL + Icons + Motion
+
+> Use web-rebuild in faithful mode for <AUTHORIZED_URL>. Keep this TypeScript/shadcn project and configured icon family. Inspect actual source animation; prefer our installed Framer Motion rather than adding another engine. Preserve reduced motion and keyboard semantics. Build a separate candidate, compare desktop/mobile captures under matched conditions, and report missing evidence. Do not treat a source/control screenshot pair as proof of reconstruction.
+
+For a public, original practice URL use https://mhmmdfaizal04.github.io/web-rebuild-skills/reference.html . It deliberately has no GSAP/Motion animation; adding elaborate effects in faithful mode would be a deviation. Use an explicit adaptation brief to request new motion.
+
 ## Original Practice Fixture
 
 [Fieldnotes Studio](../skills/web-rebuild/assets/reference.html) is an original MIT-licensed HTML reference with no external assets, scripts, or network dependencies. It has an editorial two-column hero, staggered project artwork, in-page navigation, and keyboard-operable native disclosures.

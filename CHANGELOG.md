@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.3.0 - 2026-09-05
+
+- Configured shadcn/Lucide icon guidance and TSX examples with accessible controls.
+- GSAP and Motion/Framer Motion selection, lifecycle cleanup, SSR, and reduced-motion recipes.
+- Explicit URL-to-separate-candidate workflow and honest evidence levels.
+- HTTP fixture and fixed public HTTPS inspection tests: three viewports, style/geometry observations, capture controls, visual mutation, keyboard/navigation, and 404 handling.
+- Three new evaluation definitions and updated English/Indonesian usage docs.
+
+URL pipeline tests are not a model reconstruction benchmark; animation recipes are not universal runtime certification.
+
 ## 0.2.1 - 2026-09-05
 
 - Default token-economy discipline: scoped inspection, on-demand reference sections, suitable code reuse, concise evidence, and no duplicate work.
