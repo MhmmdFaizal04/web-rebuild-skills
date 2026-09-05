@@ -4,7 +4,7 @@
 
 No end-to-end model benchmark has been run for this initial version. CI results cover specification validation, packaging/installability, documentation links, offline helper tests, and a synthetic Chromium capture pipeline. These are not evidence of reconstruction superiority.
 
-The ten cases in [cases.json](cases.json) are a manual evaluation plan. Only the original Fieldnotes HTML fixture is currently supplied. Cases requiring injection text, delayed assets, additional interaction states, or variants need controlled fixtures prepared before execution; their presence in the plan does not imply automated coverage.
+The thirteen cases in [cases.json](cases.json) are a manual evaluation plan. Only the original Fieldnotes HTML fixture is currently supplied. Cases requiring injection text, delayed assets, additional interaction states, or variants need controlled fixtures prepared before execution; their presence in the plan does not imply automated coverage.
 
 ## Compare Fairly
 
@@ -55,3 +55,9 @@ It writes into a new `artifacts/` directory, captures the fixture twice per view
 ## v0.2 Design and Stack Cases
 
 New cases cover no-emoji authored UI, brief-led creation, native server-template preservation, and an unavailable/unknown renderer. These are evaluation definitions, not completed model benchmarks. The one user-reported successful activation is useful feedback, not a controlled test of all stacks.
+
+## Token-Economy Evaluation (Not Yet Run)
+
+Compare current skill with its token-economy policy versus the same skill/task without that policy, using identical models, tools, fixtures, acceptance gates and budgets. Run at least three repetitions per condition. Include simple fixes, complex rebuilds, stale captures and a budget failure. Record all attempts and input/output/cached/reasoning tokens when exposed, tool/image context, cost, retries and quality. Missing provider usage must be `not measured`, not inferred from word counts.
+
+CI checks package structure and evaluation definitions, not model adherence or token savings. Ponytail's published benchmarks are not this project's results. A cheaper failed reconstruction is not an improvement over a correct one.

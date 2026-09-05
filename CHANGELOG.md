@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.2.1 - 2026-09-05
+
+- Default token-economy discipline: scoped inspection, on-demand reference sections, suitable code reuse, concise evidence, and no duplicate work.
+- Preserve visual fidelity, native stack, accessibility, security and final verification; invalidate stale observations.
+- Add an optional long-session/measurement guide and three evaluation definitions.
+- Document Ponytail inspiration without copying its source or claiming its benchmark savings.
+
+No token-saving percentage is measured or guaranteed.
+
 ## 0.2.0 - 2026-09-05
 
 - No-emoji authored UI policy and evidence/brief-led design-quality rules.

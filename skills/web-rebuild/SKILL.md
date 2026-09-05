@@ -5,12 +5,27 @@ license: MIT
 compatibility: Requires a coding agent with file editing. Live inspection and screenshot verification require separately configured browser and image tools. Optional local PNG comparison needs Python 3.11+ and Pillow.
 metadata:
   author: MhmmdFaizal04
-  version: "0.2.0"
+  version: "0.2.1"
 ---
 
 # Web Rebuild
 
 Reconstruct what can be observed, preserve what the user asked to keep, and verify before claiming a match. Do not replace a distinctive reference with your preferred generic design.
+
+## Token Economy (Default)
+
+Do the smallest complete job, not the fewest correct checks. These rules reduce avoidable context, code, and narration; they do not guarantee a token percentage.
+
+- Read only relevant files and reference sections for the current phase. Search before opening large files; use enough surrounding context to understand the affected flow. Do not preload all guides or unrelated stack adapters.
+- Reuse observations and captures only while their inputs, revision, environment, and UI state are unchanged. Reinspect changed or uncertain evidence; do not rely on stale context to save tokens.
+- Prefer suitable existing components/styles/assets, then native platform features or installed dependencies, then minimal custom code. Preserve reference fidelity, UX, accessibility, and native-stack behavior; a cheaper mismatching control is not equivalent.
+- Avoid speculative options, abstraction layers, unrelated refactors, new dependencies, and multiple alternative implementations unless needed or requested. Fix root causes, not just symptoms; never code-golf away clarity or validation.
+- Keep tool results focused: return relevant selectors/styles, diff summaries, errors with context, and artifact paths rather than repeated full DOMs, logs, base64 images, or unchanged files. Retain original evidence and inspect full details when needed; never hide failures or fabricate a pass.
+- Batch independent inspections when safe. Do not delegate duplicate investigation or run repeated tools without a new question. Do not change host/model permissions, reasoning settings, or context limits.
+- Implement before lengthy narration. Summarize changes, executed checks, and remaining gaps; do not paste whole files already written. Provide detail when requested, and never shorten product copy or remove UI states just to shorten your answer.
+- Keep the agreed route/state/viewport coverage, security, accessibility, and regression checks. During a correction round target affected regions, then rerun agreed final checks after the last change. Budget exhaustion means `partial`, not reduced acceptance criteria.
+
+Use [the token-economy guide](references/token-economy.md) only for complex/long sessions, explicit budget requests, or measurement. Do not load it on every small change. This policy applies automatically when this skill is active; it is not a global agent hook.
 
 ## Design Rules (All Modes)
 
@@ -18,7 +33,7 @@ Do not introduce emoji into authored UI text, icons, placeholders, decorative el
 
 Do not default to generic gradient heroes, glass panels, bento grids, decorative blobs, or repetitive cards. These visual treatments are not universally forbidden: use them only when justified by the actual reference or brief. Never present fabricated testimonials, customer logos, or statistics as real. Clearly label illustrative data and do not add fake social proof as decoration. Keep the user's established visual language. Design quality is a reasoned review, not something an automated score can guarantee.
 
-Load [design quality](references/design-quality.md) for hierarchy, typography, icon semantics, UX states, accessibility, localization, and RTL checks. Load [stack adapters](references/stack-adapters.md) to implement in the project's native language, templates, components, or widgets. Do not force React, Tailwind, Node, or Python into the user's frontend. The optional tooling runtime is separate from the application stack.
+Consult relevant sections of [design quality](references/design-quality.md) when making design decisions about hierarchy, typography, icon semantics, UX states, accessibility, localization, and RTL checks. Consult only the current stack row and applicable preservation checks in [stack adapters](references/stack-adapters.md) to implement in the project's native language, templates, components, or widgets. Do not force React, Tailwind, Node, or Python into the user's frontend. The optional tooling runtime is separate from the application stack.
 
 ## 1. Establish the Contract
 
@@ -81,7 +96,7 @@ Do not treat screenshot similarity as passing these independent gates. Report co
 
 ## 7. Deliver an Honest Report
 
-Use [the report template](assets/rebuild-report.md). Include:
+Use [the report template](assets/rebuild-report.md) for multi-step rebuilds; for a small patch use a concise equivalent without empty sections or duplicate prose. Include applicable items:
 
 - Mode, scope, environment, references or brief, and what was actually observed.
 - Native stack/version, no-emoji review, visual-direction rationale, and which runtime checks were available.

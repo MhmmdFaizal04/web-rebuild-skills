@@ -26,6 +26,12 @@ Install the skill first using the root README. These prompts go into your coding
 
 > Use web-rebuild to recreate these authorized screenshots in our Go templ project. Preserve handlers and contextual escaping. Use the existing CSS and icon system, no new React app and no emoji. If Go compilation or browser access is unavailable, say which checks were not run.
 
+## 7. Token-Conscious Layout Fix
+
+> Use web-rebuild to correct the spacing in this existing TSX page. Keep token use lean: reuse our components and tokens, inspect relevant files with enough context, and summarize results without pasting complete files. Preserve the agreed desktop/mobile, keyboard, and regression checks. Recheck screenshots if the code changes.
+
+This is the default efficiency policy, not an extra skill or a special CLI flag. Ask for a detailed explanation when needed; correctness takes priority over a shorter answer.
+
 ## Original Practice Fixture
 
 [Fieldnotes Studio](../skills/web-rebuild/assets/reference.html) is an original MIT-licensed HTML reference with no external assets, scripts, or network dependencies. It has an editorial two-column hero, staggered project artwork, in-page navigation, and keyboard-operable native disclosures.

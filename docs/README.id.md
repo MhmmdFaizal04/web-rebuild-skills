@@ -4,6 +4,16 @@ Skill AI untuk membangun ulang frontend dari URL atau screenshot berizin, memban
 
 [Lihat showcase](https://mhmmdfaizal04.github.io/web-rebuild-skills/) | [Buka demo referensi](https://mhmmdfaizal04.github.io/web-rebuild-skills/reference.html)
 
+## Hemat Token di v0.2.1
+
+Aturan hemat token aktif bersama skill tanpa memasang Ponytail terpisah. Agent diarahkan memakai komponen yang sudah ada, membaca file/panduan seperlunya, menghindari kode spekulatif dan pengulangan hasil tool, serta memberi laporan ringkas.
+
+Kualitas tidak dipangkas: pengujian mobile, aksesibilitas, keamanan, dan regresi tetap mengikuti kesepakatan. Bukti lama harus diperiksa ulang jika kode atau kondisi berubah. Ini tidak mengubah model, billing, izin, atau pengaturan reasoning. Persentase penghematan belum diukur.
+
+> Gunakan web-rebuild untuk memperbaiki layout TypeScript ini. Hemat token: pakai komponen existing, baca konteks relevan, dan ringkas laporan. Jangan lewati verifikasi desktop/mobile atau keyboard.
+
+Perbarui dengan `npx skills update web-rebuild` (tambahkan `--global` jika pemasangan global), lalu mulai ulang OpenCode.
+
 ## Pembaruan v0.2.0
 
 - Tidak menambahkan emoji ke UI, ikon, placeholder, atau contoh kode. Gunakan SVG konsisten atau label teks. Konten pengguna yang sudah ada tidak dihapus diam-diam.

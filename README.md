@@ -53,6 +53,16 @@ Replace `<REFERENCE_URL>` with a URL you are authorized to use. For screenshots,
 | Evidence instead of promises | Deliver observed facts, assumptions, screenshots, deviations, checks run, and unverified areas |
 | Optional offline image helper | Produce a side-by-side, overlay, absolute-difference image, and JSON mismatch report from two local PNGs |
 
+## Token-Conscious by Default
+
+When `web-rebuild` is active, it avoids unnecessary implementation work and repeated context: load relevant guide sections on demand, reuse suitable components, inspect only the affected code with enough context, and report concise evidence instead of repeating full files or logs. Existing design, native-stack, no-emoji, and verification rules still apply.
+
+This follows the minimal-work idea behind [Ponytail](https://github.com/DietrichGebert/ponytail), with independently written UI-specific rules. No extra installation, global hooks, model changes, or Ponytail dependency is required. The agent must not skip mobile, accessibility, security, or regression checks to save tokens. There is **no measured savings percentage or billing guarantee**; shorter output alone does not prove lower total cost.
+
+Example: "Use web-rebuild to fix this TSX layout. Keep token use lean: reuse our components, inspect only relevant files, and give a concise report. Preserve the agreed desktop/mobile and keyboard checks."
+
+[Token-economy guide](skills/web-rebuild/references/token-economy.md) includes context reuse, stale-evidence checks, bounded iteration, and an honest measurement protocol.
+
 ## Design Without the Generic Template
 
 The skill does not introduce emoji in authored UI text, icons, placeholders, or examples. It uses coherent SVG icons or meaningful labels instead. Existing user content is not silently sanitized; emoji in a reference becomes a disclosed substitution unless explicitly preserved by the user.
@@ -106,7 +116,7 @@ Common CLI agent identifiers are `opencode`, `claude-code`, `cursor`, and `codex
 To install the tagged version rather than moving `main`:
 
 ```bash
-npx skills add https://github.com/MhmmdFaizal04/web-rebuild-skills/tree/v0.2.0/skills/web-rebuild
+npx skills add https://github.com/MhmmdFaizal04/web-rebuild-skills/tree/v0.2.1/skills/web-rebuild
 ```
 
 Read the skill and scripts before installation and review updates. You do **not** run `npx web-rebuild-skills`: the existing Vercel `skills` CLI installs this GitHub package; no separate npm package is needed.
@@ -141,7 +151,7 @@ This uses portable Agent Skills frontmatter with on-demand references. CI checks
 
 CI also validates the specification, checks local documentation links, runs image-helper tests, and captures the original HTML practice fixture in Chromium at three viewports. It compares real captures and an intentionally altered capture to test the helper pipeline. This is a **synthetic verification smoke test**, not an AI-generated before/after showcase.
 
-Status: **experimental v0.2.0**. No controlled model-versus-competitor benchmark has been completed. Browser behavior and reconstruction quality depend on your agent, model, tools, reference, and task. [Evaluation protocol](evals/README.md) includes ten scenarios and a baseline plan; unpublished results are not counted as passes.
+Status: **experimental v0.2.1**. No controlled model-versus-competitor benchmark has been completed. Browser behavior and reconstruction quality depend on your agent, model, tools, reference, and task. [Evaluation protocol](evals/README.md) includes thirteen scenarios and a baseline plan; unpublished results are not counted as passes.
 
 ## Safety and Rights
 

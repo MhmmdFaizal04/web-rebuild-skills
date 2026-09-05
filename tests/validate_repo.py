@@ -22,14 +22,19 @@ for doc in ROOT.rglob('*.md'):
             continue
         assert (doc.parent / unquote(parsed.path)).exists(), f'Broken local link in {doc}: {target}'
 cases = json.loads((ROOT / 'evals/cases.json').read_text(encoding='utf-8'))
-assert len(cases) == 10 and len({case['id'] for case in cases}) == 10
+assert len(cases) == 13 and len({case['id'] for case in cases}) == 13
 assert all(case['expect'] and case['fail'] for case in cases)
-print('Package contract, local Markdown targets, and ten evaluation case definitions validated.')
+print('Package contract, local Markdown targets, and thirteen evaluation case definitions validated.')
 
-for name in ['design-quality.md', 'stack-adapters.md']:
+for name in ['design-quality.md', 'stack-adapters.md', 'token-economy.md']:
     assert f'references/{name}' in text, f'Unlinked core guide: {name}'
     assert (SKILL.parent / 'references' / name).is_file()
 assert 'Do not introduce emoji' in text
 assert 'Brief-led creation' in text
-assert 'version: "0.2.0"' in text
-print('v0.2 design policy, guide links, and entry-point metadata validated.')
+assert 'version: "0.2.1"' in text
+print('v0.2.1 design and economy policy, guide links, and entry-point metadata validated.')
+
+assert '## Token Economy (Default)' in text
+assert 'Do not preload all guides' in text
+assert 'Budget exhaustion means `partial`' in text
+assert 'do not guarantee a token percentage' in text
