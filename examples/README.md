@@ -18,9 +18,17 @@ Install the skill first using the root README. These prompts go into your coding
 
 > Use web-rebuild to compare the supplied reference and our current local page. Do not redesign it. Fix container widths and typography first, preserve existing functionality, and show evidence for each correction round.
 
+## 5. New UI Without a Reference
+
+> Use web-rebuild in brief-led creation mode. Build a furniture catalog for our existing Laravel Blade application. Use supplied products and brand assets. No emoji, fabricated testimonials, or generic gradient hero. Preserve routes, CSRF, form validation, and native templates. Propose a coherent visual direction and test empty/error/loading states, mobile reflow, and keyboard flow. Do not claim reference fidelity.
+
+## 6. Keep the Existing Language
+
+> Use web-rebuild to recreate these authorized screenshots in our Go templ project. Preserve handlers and contextual escaping. Use the existing CSS and icon system, no new React app and no emoji. If Go compilation or browser access is unavailable, say which checks were not run.
+
 ## Original Practice Fixture
 
-[Fieldnotes Studio](../skills/web-rebuild/assets/reference.html) is an original MIT-licensed HTML reference with no external assets, scripts, or network dependencies. It has an editorial two-column hero, responsive work rows, in-page navigation, and an accessible native disclosure.
+[Fieldnotes Studio](../skills/web-rebuild/assets/reference.html) is an original MIT-licensed HTML reference with no external assets, scripts, or network dependencies. It has an editorial two-column hero, staggered project artwork, in-page navigation, and keyboard-operable native disclosures.
 
 Find it in the installed skill's `assets/reference.html`. Open it in a browser, or serve the installed assets directory locally:
 
@@ -35,7 +43,7 @@ Capture reference views at 320x900, 768x1024, and 1440x1000. Ask the agent to re
 Expected checks:
 
 - Preserve editorial hierarchy, asymmetric hero, color roles, section order, and copy in faithful mode.
-- Stack hero below 768 CSS pixels and keep work rows readable without page overflow.
+- Stack hero below 768 CSS pixels and keep project artwork and captions readable without page overflow.
 - Make navigation anchors and the disclosure functional with keyboard access.
 - Keep code editable; a screenshot background is not a reconstruction.
 - Record source/candidate browser settings, visual differences, and untested areas.

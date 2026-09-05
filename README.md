@@ -1,26 +1,24 @@
 # Web Rebuild Skills
 
-**Rebuild a reference website into editable frontend code. Compare it in the browser. Fix the differences.**
+![Web Rebuild Skills: rebuild the reference, keep the character](docs/assets/cover.svg)
+
+**Rebuild a reference. Create from a brief. Keep your stack and make the design intentional.**
 
 [![CI](https://github.com/MhmmdFaizal04/web-rebuild-skills/actions/workflows/ci.yml/badge.svg)](https://github.com/MhmmdFaizal04/web-rebuild-skills/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Agent Skills](https://img.shields.io/badge/Agent_Skills-compatible-black)](https://agentskills.io/specification)
 
-[Quick start](#quick-start) | [Bahasa Indonesia](docs/README.id.md) | [Examples](examples/README.md) | [Contributing](CONTRIBUTING.md)
+[Live showcase](https://mhmmdfaizal04.github.io/web-rebuild-skills/) | [Reference demo](https://mhmmdfaizal04.github.io/web-rebuild-skills/reference.html) | [Quick start](#quick-start) | [Bahasa Indonesia](docs/README.id.md) | [Examples](examples/README.md) | [Contributing](CONTRIBUTING.md)
 
-An evidence-first Agent Skill for rebuilding an authorized website from a URL, screenshots, or both. It guides your coding agent through observation, implementation, visual comparison, and bounded correction. It is **not** a hosted website cloner, a browser, or a standalone code generator.
+An evidence-first Agent Skill for rebuilding an authorized website from a URL or screenshots, and for explicitly requested brief-led frontend UI/UX creation. It guides your coding agent through observation, implementation, visual comparison, and bounded correction. It is **not** a hosted website cloner, a browser, or a standalone code generator.
 
-```text
-Reference URL / screenshots + your brief
-                    |
-          Inspect and record evidence
-                    |
-          Implement editable frontend
-                    |
-       Capture -> Compare -> Fix (bounded)
-                    |
-       Code + screenshots + honest report
-```
+## See the Reference
+
+[![Actual desktop capture of the original Fieldnotes design reference](https://mhmmdfaizal04.github.io/web-rebuild-skills/previews/reference-1440.png)](https://mhmmdfaizal04.github.io/web-rebuild-skills/reference.html)
+
+Original MIT-licensed reference artwork, captured in Chromium by CI. **This is a practice reference, not a claimed AI-generated reconstruction.** [Desktop capture](https://mhmmdfaizal04.github.io/web-rebuild-skills/previews/reference-1440.png) / [Mobile capture](https://mhmmdfaizal04.github.io/web-rebuild-skills/previews/reference-320.png) / [Interactive reference](https://mhmmdfaizal04.github.io/web-rebuild-skills/reference.html).
+
+**Observe -> Build -> Compare -> Refine.** Use a source for faithful/adaptation work, or explicitly choose brief-led creation when there is no reference.
 
 ## Quick Start
 
@@ -46,11 +44,41 @@ Replace `<REFERENCE_URL>` with a URL you are authorized to use. For screenshots,
 |---|---|
 | Faithful reconstruction | Preserve observed hierarchy, spacing, typography, copy, crop, and behavior for references you can reuse |
 | Reference adaptation | Keep specified structure while changing brand, assets, or copy according to an explicit brief |
+| Brief-led creation | Design from audience, task, content, and constraints without inventing reference-fidelity claims |
+| No emoji / intentional design | No introduced emoji or default generic UI template; preserve user content and disclose source substitutions |
+| Cross-stack adaptation | Follow native templates, components, widgets, routing, state, and security instead of forcing React |
 | Existing-project awareness | Inspect the current framework, tokens, and components before introducing new dependencies |
 | Visual correction loop | Compare matched captures, fix large structural errors first, stop at the agreed budget |
 | Responsive and interaction checks | Test mobile/intermediate/desktop layouts, keyboard navigation, menus, dialogs, and forms safely |
 | Evidence instead of promises | Deliver observed facts, assumptions, screenshots, deviations, checks run, and unverified areas |
 | Optional offline image helper | Produce a side-by-side, overlay, absolute-difference image, and JSON mismatch report from two local PNGs |
+
+## Design Without the Generic Template
+
+The skill does not introduce emoji in authored UI text, icons, placeholders, or examples. It uses coherent SVG icons or meaningful labels instead. Existing user content is not silently sanitized; emoji in a reference becomes a disclosed substitution unless explicitly preserved by the user.
+
+No default gradient hero, glass panel, bento grid, fake testimonial, or invented usage statistic. Styles follow the reference, brand, and task; a justified gradient is not universally forbidden. UI work includes hierarchy, typography, spacing, responsive behavior, and meaningful states. UX checks include keyboard flow, recovery, long copy, localization, and RTL where required.
+
+[Design-quality playbook](skills/web-rebuild/references/design-quality.md) explains these rules. They guide the agent; they are not a guarantee that every model output is flawless.
+
+## Use Your Native Stack
+
+| Language / platform | Documented frontend adaptation |
+|---|---|
+| HTML, CSS, JavaScript, TypeScript | Plain pages, Web Components, React/Next, Vue/Nuxt, Svelte, Angular, Astro |
+| PHP | Blade, Twig, WordPress templates |
+| Python | Django, Jinja and existing server templates |
+| Ruby | ERB, Rails, Hotwire |
+| Go | html/template, templ |
+| Java / Kotlin | Thymeleaf, JSP and the existing JVM web stack |
+| C# | Razor, Blazor |
+| Elixir | HEEx, Phoenix LiveView |
+| Rust | Leptos, Yew |
+| Dart | Flutter web widgets and semantics |
+| Scala / Clojure | Twirl, Scala.js, Hiccup, Reagent, or the actual renderer |
+| Other web stacks | Inspect native rendering, escaping, state and build tooling; use the fallback procedure |
+
+This is **language-agnostic guidance, not a claim of tested support for every runtime**. The agent preserves the project's language, version, route helpers, escaping, CSRF protection, forms, state, and SSR boundaries. It reports missing compilers or browser tools instead of rewriting the application in React. Native mobile is outside the tested web scope. [Stack adapter playbook](skills/web-rebuild/references/stack-adapters.md).
 
 ## Install Options
 
@@ -75,10 +103,10 @@ npx skills remove web-rebuild
 
 Common CLI agent identifiers are `opencode`, `claude-code`, `cursor`, and `codex`. The CLI chooses the appropriate installation paths; do not assume they are identical between versions. For a global installation, use the corresponding global flag when listing/updating/removing. Restart OpenCode after installation; other agents may also require a new session. Explicitly mention `web-rebuild` if automatic activation does not occur. Slash-command support depends on the host; this repo does not register a universal slash command.
 
-To install the tagged initial version rather than moving `main`:
+To install the tagged version rather than moving `main`:
 
 ```bash
-npx skills add https://github.com/MhmmdFaizal04/web-rebuild-skills/tree/v0.1.0/skills/web-rebuild
+npx skills add https://github.com/MhmmdFaizal04/web-rebuild-skills/tree/v0.2.0/skills/web-rebuild
 ```
 
 Read the skill and scripts before installation and review updates. You do **not** run `npx web-rebuild-skills`: the existing Vercel `skills` CLI installs this GitHub package; no separate npm package is needed.
@@ -88,7 +116,7 @@ Read the skill and scripts before installation and review updates. You do **not*
 | Input | Example |
 |---|---|
 | Reference and scope | One authorized URL, or attached desktop/mobile screenshots; routes to rebuild |
-| Mode | `faithful` or `adaptation`, with intended changes |
+| Mode | `faithful`, `adaptation`, or explicitly requested `brief-led creation` |
 | Target project | Existing Vue project, React/Tailwind, or a plain HTML prototype |
 | Assets | Fonts/images you can reuse, or permission to substitute |
 | Behavior | Menu open state, modal, safe form validation; backend work is separate |
@@ -113,7 +141,7 @@ This uses portable Agent Skills frontmatter with on-demand references. CI checks
 
 CI also validates the specification, checks local documentation links, runs image-helper tests, and captures the original HTML practice fixture in Chromium at three viewports. It compares real captures and an intentionally altered capture to test the helper pipeline. This is a **synthetic verification smoke test**, not an AI-generated before/after showcase.
 
-Status: **experimental v0.1.0**. No controlled model-versus-competitor benchmark has been completed. Browser behavior and reconstruction quality depend on your agent, model, tools, reference, and task. [Evaluation protocol](evals/README.md) includes six scenarios and a baseline plan; unpublished results are not counted as passes.
+Status: **experimental v0.2.0**. No controlled model-versus-competitor benchmark has been completed. Browser behavior and reconstruction quality depend on your agent, model, tools, reference, and task. [Evaluation protocol](evals/README.md) includes ten scenarios and a baseline plan; unpublished results are not counted as passes.
 
 ## Safety and Rights
 
@@ -148,7 +176,7 @@ Small contributions matter: one reproducible layout case, one negative test, one
 
 ## Sources and License
 
-Original skill content and practice fixture: MIT, see [LICENSE](LICENSE). Third-party references retain their own licenses. This is an independent project, not affiliated with Vercel, Anthropic, or agent vendors.
+Original skill content, showcase, artwork, and practice fixture: MIT, see [LICENSE](LICENSE). Third-party references retain their own licenses. This is an independent project, not affiliated with Vercel, Anthropic, or agent vendors.
 
 - [Agent Skills specification](https://agentskills.io/specification)
 - [Vercel skills CLI](https://github.com/vercel-labs/skills)

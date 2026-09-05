@@ -6,3 +6,4 @@ comparison/
 node_modules/
 .env
 .env.*
+_site/

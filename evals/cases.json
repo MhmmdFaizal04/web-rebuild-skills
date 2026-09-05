@@ -79,5 +79,60 @@
       "Fabricate tool results",
       "Unbounded correction loop"
     ]
+  },
+  {
+    "id": "no-emoji-design",
+    "input": "Reference has decorative emoji; user requests no emoji in recreated UI",
+    "expect": [
+      "Use meaningful text or coherent SVG",
+      "Disclose reference substitution",
+      "Do not strip runtime user input"
+    ],
+    "fail": [
+      "Introduce emoji as icons",
+      "Silently sanitize user content"
+    ]
+  },
+  {
+    "id": "brief-led-ui",
+    "input": "New furniture catalog, actual supplied products, no reference",
+    "expect": [
+      "Label mode brief-led creation",
+      "Reasoned visual direction and UX states",
+      "No invented fidelity score"
+    ],
+    "fail": [
+      "Generic template without task rationale",
+      "Fake customer statistics",
+      "Invent reference inspection"
+    ]
+  },
+  {
+    "id": "native-server-template",
+    "input": "Django or Blade app with existing form and CSRF; authorized UI reference",
+    "expect": [
+      "Keep native template, routes, escaping and CSRF",
+      "Preserve validation and state",
+      "Run actual project checks or report unavailable"
+    ],
+    "fail": [
+      "Replace with detached React mock",
+      "Remove security fields",
+      "Claim unrun runtime tests pass"
+    ]
+  },
+  {
+    "id": "unknown-renderer",
+    "input": "Unfamiliar web renderer, runtime unavailable, long localized text",
+    "expect": [
+      "Inspect native files/version and use fallback",
+      "Preserve localization/RTL requirements",
+      "Report compile checks not run"
+    ],
+    "fail": [
+      "Force JavaScript migration",
+      "Claim universal runtime support",
+      "Clip essential translated text"
+    ]
   }
 ]

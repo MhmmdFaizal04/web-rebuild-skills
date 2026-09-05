@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 480" role="img" aria-labelledby="title desc">
+<title id="title">Web Rebuild Skills</title><desc id="desc">Reference-led frontend work. Inspect, build, compare, refine. Framework-aware, no emoji, evidence-first.</desc>
+<rect width="1280" height="480" fill="#f5f2e9"/><path d="M48 65h1184M48 419h1184" stroke="#bdc5b8"/>
+<text x="48" y="42" font-family="monospace" font-size="13" letter-spacing="3" fill="#526054">AN OPEN AGENT SKILL / V0.2</text>
+<text x="48" y="154" font-family="Georgia,serif" font-size="69" letter-spacing="-3" fill="#25372d">Rebuild the reference.</text>
+<text x="48" y="227" font-family="Georgia,serif" font-size="69" font-style="italic" letter-spacing="-3" fill="#943c28">Keep the character.</text>
+<text x="52" y="289" font-family="system-ui,sans-serif" font-size="20" fill="#526054">Editable frontend. Deliberate UI. Verifiable differences.</text>
+<rect x="48" y="329" width="550" height="48" fill="#25372d"/><text x="67" y="359" font-family="monospace" font-size="14" fill="#f5f2e9">npx skills add MhmmdFaizal04/web-rebuild-skills</text>
+<rect x="891" y="106" width="296" height="270" fill="#dedfd0"/><path d="M934 330V224a103 103 0 0 1 206 0v106" fill="#943c28"/><path d="M982 330V232a55 55 0 0 1 110 0v98" fill="#e8d3b5"/><circle cx="1134" cy="319" r="38" fill="#f0f0df"/>
+<text x="48" y="451" font-family="monospace" font-size="12" letter-spacing="1" fill="#526054">INSPECT / BUILD / COMPARE / REFINE</text><text x="887" y="451" font-family="monospace" font-size="12" fill="#526054">NO EMOJI. NO DEFAULT TEMPLATE.</text>
+</svg>

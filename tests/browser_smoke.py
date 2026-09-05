@@ -31,16 +31,18 @@ with sync_playwright() as p:
         page.screenshot(path=str(reference), animations='disabled', scale='css')
         page.screenshot(path=str(candidate), animations='disabled', scale='css')
         assert module.compare(reference, candidate, output / f'control-diff-{width}')['passed']
-        page.add_style_tag(content='h1 { color: #0044ff !important; }')
+        mutation_style = page.add_style_tag(content='h1 { color: #0044ff !important; }')
         mutated = output / f'mutated-{width}.png'
         page.screenshot(path=str(mutated), animations='disabled', scale='css')
         assert not module.compare(reference, mutated, output / f'mutation-diff-{width}')['passed']
-        summary = page.locator('summary')
+        mutation_style.evaluate('(node) => node.remove()')
+        page.screenshot(path=str(output / f'full-reference-{width}.png'), full_page=True, animations='disabled', scale='css')
+        summary = page.locator('summary').first
         summary.focus()
         page.keyboard.press('Enter')
-        assert page.locator('details').evaluate('(node) => node.open')
+        assert page.locator('details').first.evaluate('(node) => node.open')
         page.keyboard.press('Enter')
-        assert not page.locator('details').evaluate('(node) => node.open')
+        assert not page.locator('details').first.evaluate('(node) => node.open')
         assert not errors, errors
         manifest['captures'].append({'width': width, 'height': height, 'dpr': 1, 'scale': 'css',
                                      'locale': 'en-US', 'timezone': 'UTC', 'reduced_motion': 'reduce',

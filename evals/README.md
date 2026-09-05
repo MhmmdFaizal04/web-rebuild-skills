@@ -4,7 +4,7 @@
 
 No end-to-end model benchmark has been run for this initial version. CI results cover specification validation, packaging/installability, documentation links, offline helper tests, and a synthetic Chromium capture pipeline. These are not evidence of reconstruction superiority.
 
-The six cases in [cases.json](cases.json) are a manual evaluation plan. Only the original Fieldnotes HTML fixture is currently supplied. Cases requiring injection text, delayed assets, additional interaction states, or variants need controlled fixtures prepared before execution; their presence in the plan does not imply automated coverage.
+The ten cases in [cases.json](cases.json) are a manual evaluation plan. Only the original Fieldnotes HTML fixture is currently supplied. Cases requiring injection text, delayed assets, additional interaction states, or variants need controlled fixtures prepared before execution; their presence in the plan does not imply automated coverage.
 
 ## Compare Fairly
 
@@ -51,3 +51,7 @@ python tests/browser_smoke.py
 ```
 
 It writes into a new `artifacts/` directory, captures the fixture twice per viewport, and compares an intentionally altered capture. It refuses to overwrite existing artifacts. Review Actions artifacts for outputs; they contain only this public synthetic fixture, never user pages.
+
+## v0.2 Design and Stack Cases
+
+New cases cover no-emoji authored UI, brief-led creation, native server-template preservation, and an unavailable/unknown renderer. These are evaluation definitions, not completed model benchmarks. The one user-reported successful activation is useful feedback, not a controlled test of all stacks.

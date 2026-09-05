@@ -38,3 +38,13 @@ Status: verified / partial / blocked / unverified
 - Why work stopped and recommended next step:
 
 Do not mark blank or unrun checks as passed. Image tolerance is not a general quality score.
+
+## Design and Stack Review
+
+- Native language/framework/version and renderer:
+- Reference evidence or brief-led design rationale:
+- No introduced emoji; existing content preserved and source substitutions disclosed:
+- Generic-template / invented-social-proof review:
+- Typography, spacing, icon consistency and primary user flow:
+- Relevant loading/empty/error/success states, localization and RTL:
+- Compiler/runtime/browser checks actually run, unavailable tools:

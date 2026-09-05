@@ -2,6 +2,28 @@
 
 Skill AI untuk membangun ulang frontend dari URL atau screenshot berizin, membandingkan hasil di browser, lalu memperbaiki perbedaannya.
 
+[Lihat showcase](https://mhmmdfaizal04.github.io/web-rebuild-skills/) | [Buka demo referensi](https://mhmmdfaizal04.github.io/web-rebuild-skills/reference.html)
+
+## Pembaruan v0.2.0
+
+- Tidak menambahkan emoji ke UI, ikon, placeholder, atau contoh kode. Gunakan SVG konsisten atau label teks. Konten pengguna yang sudah ada tidak dihapus diam-diam.
+- Tidak memakai template generik AI secara otomatis: gradient/glass/bento tanpa alasan, kartu berulang, testimoni palsu, atau angka penggunaan karangan.
+- Panduan lintas bahasa mengikuti stack proyek: HTML/CSS/JS/TS, PHP, Python, Ruby, Go, Java/Kotlin, C#, Elixir, Rust, Dart untuk web, Scala, Clojure, dan fallback renderer lain.
+- Dukungan berarti panduan adaptasi, **bukan semua framework sudah diuji runtime**. Skill harus menjaga template, routing, escaping, CSRF, state, dan SSR native.
+- Mode **brief-led creation** untuk membuat web baru tanpa referensi. Berikan audiens, tugas utama, konten, dan batasan; jangan mengklaim kemiripan terhadap referensi yang tidak ada.
+
+Untuk memperbarui pemasangan yang sudah ada:
+
+```bash
+npx skills update web-rebuild
+```
+
+Jika pemasangan global gunakan `npx skills update web-rebuild --global`. Tutup dan buka kembali OpenCode setelah update.
+
+Contoh tugas lintas stack:
+
+> Gunakan web-rebuild dalam mode brief-led creation. Buat halaman katalog untuk usaha furnitur di proyek Laravel Blade ini. Jangan migrasikan ke React, jangan tambahkan emoji atau angka testimoni palsu. Susun UI berdasarkan produk nyata dan alur pencarian, lalu periksa mobile, keyboard, empty state, dan error state.
+
 ## Instalasi
 
 Siapkan coding agent yang mendukung Agent Skills, Git, serta Node.js/npm. CLI yang diuji (`skills@1.5.23`) membutuhkan Node.js minimal 22.20.0.
