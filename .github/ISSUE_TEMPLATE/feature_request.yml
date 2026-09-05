@@ -1,0 +1,17 @@
+name: Focused improvement
+description: Suggest a fixture, verification improvement, or clearer workflow
+title: "[Idea] "
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What reference-rebuild problem should this solve?
+    validations:
+      required: true
+  - type: textarea
+    id: verify
+    attributes:
+      label: How could we verify the improvement?
+      description: Suggest an observable case, negative control, or expected output.
+    validations:
+      required: true

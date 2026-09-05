@@ -1,0 +1,22 @@
+name: Bug report
+description: Report a reproducible skill, helper, or installation problem
+title: "[Bug] "
+body:
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: OS, Node/Python, skills CLI, agent/model, and package version
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps and expected versus actual behavior
+      description: Use public or synthetic inputs. Never include secrets or private screenshots.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Sanitized evidence and commands actually run

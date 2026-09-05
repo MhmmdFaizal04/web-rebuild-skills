@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fieldnotes Studio | Original practice reference</title>
+  <style>
+    :root { --paper: #f4f1e9; --ink: #202820; --accent: #9b3928; --line: #b8bdb0; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.6 system-ui, sans-serif; }
+    a { color: inherit; text-underline-offset: 5px; }
+    :focus-visible { outline: 3px solid var(--accent); outline-offset: 5px; }
+    .frame { max-width: 1180px; margin: auto; padding: 0 28px; }
+    header { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 24px 0; border-bottom: 1px solid var(--line); }
+    .wordmark { font-weight: 750; letter-spacing: -.04em; font-size: 23px; text-decoration: none; }
+    nav { display: flex; gap: 28px; }
+    .hero { display: grid; grid-template-columns: 1.35fr 1fr; gap: 64px; padding: 76px 0 64px; align-items: center; }
+    .eyebrow { color: var(--accent); text-transform: uppercase; letter-spacing: .18em; font-size: 12px; font-weight: 750; }
+    h1 { font: 400 clamp(42px, 6vw, 76px)/1.02 Georgia, serif; letter-spacing: -.05em; margin: 20px 0 26px; }
+    .intro { max-width: 40ch; color: #485347; }
+    .cta { display: inline-block; margin-top: 18px; padding: 12px 20px; background: var(--ink); color: var(--paper); text-decoration: none; }
+    .art { aspect-ratio: 4/5; border: 1px solid var(--line); background: #dedfcf; position: relative; overflow: hidden; }
+    .art::before { content: ''; position: absolute; width: 70%; height: 65%; border-radius: 50% 50% 0 0; background: var(--accent); bottom: 0; left: 15%; }
+    .art::after { content: ''; position: absolute; width: 40%; height: 50%; background: #b5c09f; right: -5%; bottom: -10%; transform: rotate(22deg); }
+    .caption { font-size: 12px; margin-top: 10px; color: #485347; }
+    h2 { font: 400 36px/1.2 Georgia, serif; margin: 0; }
+    .section-head { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; padding: 28px 0; border-top: 1px solid var(--ink); }
+    .work-row { display: grid; grid-template-columns: 60px 1fr auto; gap: 20px; padding: 24px 0; border-top: 1px solid var(--line); align-items: baseline; }
+    .work-row h3 { font-size: 20px; margin: 0; }
+    .work-row p { margin: 4px 0 0; color: #485347; }
+    .number { color: var(--accent); }
+    details { margin-top: 44px; border-block: 1px solid var(--line); padding: 20px 0; }
+    summary { cursor: pointer; font-weight: 650; }
+    footer { padding: 36px 0; font-size: 13px; }
+    @media (max-width: 767px) {
+      .frame { padding: 0 20px; }
+      header { flex-wrap: wrap; }
+      nav { gap: 18px; font-size: 14px; }
+      .hero { grid-template-columns: 1fr; gap: 30px; padding: 42px 0; }
+      .art { aspect-ratio: 4/3; }
+      .work-row { grid-template-columns: 32px 1fr; gap: 12px; }
+      .work-row > a { grid-column: 2; }
+      .section-head { align-items: start; flex-direction: column; gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="frame">
+    <header><a class="wordmark" href="#home">Fieldnotes.</a><nav aria-label="Primary"><a href="#work">Selected work</a><a href="#approach">Our approach</a></nav></header>
+    <main id="home">
+      <section class="hero" aria-labelledby="hero-title">
+        <div><div class="eyebrow">Independent design studio / 2026</div><h1 id="hero-title">Thoughtful spaces.<br>Everyday stories.</h1><p class="intro">We shape quiet identities for people doing meaningful work. Clear ideas, considered details, and room to breathe.</p><a class="cta" href="#work">Explore selected work</a></div>
+        <div><div class="art" role="img" aria-label="Abstract terracotta arch with a sage geometric shape"></div><div class="caption">01 / Studies in shape and balance</div></div>
+      </section>
+      <section id="work" aria-labelledby="work-title">
+        <div class="section-head"><h2 id="work-title">Selected work</h2><span>Small teams. Lasting ideas.</span></div>
+        <article class="work-row"><span class="number">01</span><div><h3>Common Ground</h3><p>A neighborhood cafe with a generous spirit.</p></div><a href="#approach">Read our approach</a></article>
+        <article class="work-row"><span class="number">02</span><div><h3>Northline Journal</h3><p>An independent publication about slower living.</p></div><a href="#approach">Read our approach</a></article>
+      </section>
+      <details id="approach"><summary>What does a collaboration look like?</summary><p>We start by listening, make the essential choices together, and refine through small, visible iterations. This is an original practice fixture, not a commercial service.</p></details>
+    </main>
+    <footer>Original MIT-licensed practice reference for Web Rebuild Skills. No external assets, scripts, forms, or tracking.</footer>
+  </div>
+</body>
+</html>
