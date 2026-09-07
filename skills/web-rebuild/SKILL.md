@@ -3,11 +3,10 @@ name: web-rebuild
 description: Rebuild or recreate a website frontend from an authorized reference URL, screenshots, or an existing page. Use when asked to clone a website layout, match a screenshot, reproduce a UI, or adapt a reference design into editable code with responsive and visual verification. Also use when explicitly asked to create a new website or improve frontend UI/UX without emoji or generic AI styling. Adapt to the project's language and renderer; unrelated backend work is out of scope.
 license: MIT
 compatibility: Requires a coding agent with file editing. Live inspection and screenshot verification require separately configured browser and image tools. Optional local PNG comparison needs Python 3.11+ and Pillow.
-acknowledged_risks:
-  - third_party_content
 metadata:
   author: MhmmdFaizal04
   version: "0.3.1"
+  acknowledged-risks: "third_party_content"
 ---
 
 # Web Rebuild
