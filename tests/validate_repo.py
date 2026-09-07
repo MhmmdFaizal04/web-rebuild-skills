@@ -31,10 +31,17 @@ for name in ['design-quality.md', 'stack-adapters.md', 'token-economy.md', 'icon
     assert (SKILL.parent / 'references' / name).is_file()
 assert 'Do not introduce emoji' in text
 assert 'Brief-led creation' in text
-assert 'version: "0.3.0"' in text
-print('v0.3.0 design and economy policy, guide links, and entry-point metadata validated.')
+assert 'version: "0.3.1"' in text
+print('v0.3.1 design and economy policy, guide links, and entry-point metadata validated.')
 
 assert '## Token Economy (Default)' in text
 assert 'Do not preload all guides' in text
 assert 'Budget exhaustion means `partial`' in text
 assert 'do not guarantee a token percentage' in text
+
+# v0.3.1 security considerations
+assert '## Security Considerations' in text, 'Missing Security Considerations section'
+assert 'acknowledged-risks' in text, 'Missing acknowledged-risks in metadata'
+assert 'third_party_content' in text, 'Missing third_party_content risk declaration'
+assert 'untrusted data' in text.lower() or 'untrusted' in text.lower(), 'Missing untrusted data handling'
+print('v0.3.1 security considerations and acknowledged-risks metadata validated.')
