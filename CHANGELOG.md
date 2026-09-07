@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.3.1 - 2026-09-07
+
+- Added `acknowledged_risks: [third_party_content]` to SKILL.md frontmatter to satisfy skills.sh W011 scanner.
+- New "Security Considerations" section in SKILL.md with explicit prompt injection mitigations, scope constraints, and untrusted data handling rules.
+- Updated SECURITY.md with detailed W011 risk acknowledgment, evidence that risk is low (user-initiated, read-only, no credential handling), and enumerated anti-injection defenses.
+- Section 2 "Respect Trust and Scope" preserved with all existing mitigations intact.
+
+This addresses the W011 warning ("Third-party content exposure detected") on skills.sh. The skill intentionally inspects external web pages as visual references; all mitigations are documented and enforced in the skill instructions.
+
 ## 0.3.0 - 2026-09-05
 
 - Configured shadcn/Lucide icon guidance and TSX examples with accessible controls.
